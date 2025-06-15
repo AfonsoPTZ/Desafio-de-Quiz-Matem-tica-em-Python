@@ -23,7 +23,7 @@ O quiz desafia o usuário com 10 questões de múltipla escolha, onde é preciso
 ```
 /
 ├── 📄 README.md
-└── 📁 Trabalho Matematica/
+└── 📁 Quiz-Matematica-em-Python/
     └── 🐍 trabalho.py
 ```
 ## 🚀 Como Executar o Projeto
