@@ -224,7 +224,7 @@ def run_quiz():
         
         # Pausa para o usuário ver o resultado antes da próxima pergunta.
         time.sleep(1.5)
-        # Adiciona um espaço extra antes da próxima questão para melhor legibilidade.
+        # Adiciona um espaço extra antes da próxima questão para melhor legibilidade do Quiz.
         print()
 
 
