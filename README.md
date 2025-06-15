@@ -1,1 +1,1 @@
-# Desafio-de-Quiz-Matem-tica-em-Python
+# Desafio-de-Quiz-Matematica-em-Python
