@@ -19,12 +19,10 @@ O quiz desafia o usuário com 10 questões de múltipla escolha, onde é preciso
     * 💻 Apresentação formatada para uma leitura clara no terminal.
 
 ## 📂 Estrutura de Pastas
-
 ```
-/
+📁 Quiz-Matematica-em-Python/
 ├── 📄 README.md
-└── 📁 Trabalho Matematica/
-    └── 🐍 trabalho.py
+└── 🐍 trabalho.py
 ```
 ## 🚀 Como Executar o Projeto
 
