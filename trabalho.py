@@ -1,198 +1,203 @@
 import time
-import math # Importa a biblioteca de matemática
+import math
+import cmath
 
 def run_quiz():
     """
-    Função principal que executa o quiz de Python com foco em matemática.
+    Função principal que executa o quiz de Python com foco em matemática avançada.
     """
-
-    # Define uma largura padrão para os separadores, facilitando a manutenção
     LARGURA_TERMINAL = 90
 
     perguntas = [
         {
             "pergunta": (
-                "1. O código abaixo tenta realizar uma divisão.\n\n"
+                "1. Para resolver a equação `ax² + bx + c = 0` e encontrar **raízes reais**, qual condição o código deve verificar?\n\n"
                 "if ______________:\n"
-                "    resultado = 100 / divisor\n"
-                "    print(f'O resultado é {resultado}')\n"
+                "    # Código para calcular as raízes reais aqui...\n"
+                "    print('A equação possui raízes reais.')\n"
                 "else:\n"
-                "    print('Não é possível ______________.')"
+                "    print('A equação não possui raízes reais ou não é quadrática.')"
             ),
             "opcoes": {
-                "a": "divisor == 0 - dividir por um número par",
-                "b": "divisor != 0 - dividir por zero",
-                "c": "divisor > 0 - dividir por um número negativo",
-                "d": "divisor < 100 - dividir por um número maior que 100"
+                "a": "a != 0 and (b**2 - 4*a*c) >= 0 - validar e calcular raízes reais",
+                "b": "a != 0 - garantir que a equação é quadrática, mas não que as raízes são reais",
+                "c": "(b**2 - 4*a*c) >= 0 - garantir raízes reais, mas não que a equação é quadrática",
+                "d": "b > 0 and c > 0 - validar apenas coeficientes positivos"
             },
-            "resposta": "b",
-            "explicacao": "A condição 'divisor != 0' (diferente de zero) é essencial para prevenir o erro 'ZeroDivisionError', que ocorre ao tentar dividir qualquer número por zero."
+            "resposta": "a",
+            "explicacao": "Para a equação ser quadrática, `a` deve ser diferente de zero. Para que as raízes sejam reais, o discriminante (`b² - 4ac`) deve ser maior ou igual a zero. Ambas as condições são necessárias."
         },
         {
             "pergunta": (
-                "2. O objetivo é calcular a raiz quadrada de um número.\n\n"
+                "2. O código calcula o logaritmo de 'x' em uma 'base' customizada.\n\n"
                 "if ______________:\n"
-                "    raiz = math.sqrt(numero)\n"
-                "    print(f'A raiz é {raiz}')\n"
+                "    logaritmo = math.log(x, base)\n"
+                "    print(f'O resultado é {logaritmo}')\n"
                 "else:\n"
                 "    print('Não é possível ______________.')"
             ),
             "opcoes": {
-                "a": "numero > 0 - calcular a raiz de um número ímpar",
-                "b": "numero != 0 - calcular a raiz de zero",
-                "c": "numero >= 0 - calcular a raiz quadrada de um número negativo",
-                "d": "numero == 0 - calcular a raiz de um número positivo"
+                "a": "x > 0 and base > 0 - usar uma base igual a 1 ou negativa",
+                "b": "x > 0 and base != 1 - usar um logaritmando negativo",
+                "c": "x > 0 and base > 0 and base != 1 - calcular o logaritmo com argumentos inválidos",
+                "d": "isinstance(x, int) and isinstance(base, int) - usar uma base fracionária"
             },
             "resposta": "c",
-            "explicacao": "A função 'math.sqrt()' só aceita números não negativos (zero ou positivos). A condição 'numero >= 0' garante que o programa não tente calcular a raiz de um número negativo."
+            "explicacao": "A função logarítmica tem três restrições: o logaritmando 'x' deve ser positivo (`x > 0`), e a 'base' deve ser positiva (`base > 0`) e diferente de 1 (`base != 1`)."
         },
         {
             "pergunta": (
-                "3. Este código tenta calcular o logaritmo de base 10.\n\n"
+                "3. O código deve determinar se um 'ano' é bissexto no calendário Gregoriano.\n\n"
                 "if ______________:\n"
-                "    log = math.log10(x)\n"
-                "    print(f'O logaritmo é {log}')\n"
+                "    print(f'{ano} é bissexto.')\n"
                 "else:\n"
-                "    print('Não é possível ______________.')"
+                "    print('A regra não foi aplicada corretamente.')"
             ),
             "opcoes": {
-                "a": "x > 0 - calcular o logaritmo de um número não positivo (zero ou negativo)",
-                "b": "x >= 0 - calcular o logaritmo de um número negativo",
-                "c": "x != 1 - calcular o logaritmo de 1",
-                "d": "x > 10 - calcular o logaritmo de um número menor que 10"
-            },
-            "resposta": "a",
-            "explicacao": "Logaritmos são definidos apenas para números positivos. A condição 'x > 0' exclui tanto o zero quanto os números negativos, evitando o erro."
-        },
-        {
-            "pergunta": (
-                "4. O trecho de código visa calcular o fatorial de um número inteiro.\n\n"
-                "if ______________:\n"
-                "    fatorial = math.factorial(n)\n"
-                "    print(f'O fatorial é {fatorial}')\n"
-                "else:\n"
-                "    print('Não é possível ______________.')"
-            ),
-            "opcoes": {
-                "a": "n > 0 - calcular o fatorial de zero",
-                "b": "n != 0 - calcular o fatorial de números ímpares",
-                "c": "n >= 0 - calcular o fatorial de um número negativo",
-                "d": "n < 100 - calcular o fatorial de um número muito grande"
-            },
-            "resposta": "c",
-            "explicacao": "A função fatorial é definida apenas para números inteiros não negativos (0, 1, 2, ...). A condição 'n >= 0' impede que um número negativo seja passado, o que causaria um erro."
-        },
-        {
-            "pergunta": (
-                "5. O código deve calcular a operação de módulo (resto da divisão).\n\n"
-                "if ______________:\n"
-                "    resto = dividendo % divisor\n"
-                "    print(f'O resto é {resto}')\n"
-                "else:\n"
-                "    print('Não é possível ______________.')"
-            ),
-            "opcoes": {
-                "a": "divisor != 0 - calcular o módulo por zero",
-                "b": "dividendo > divisor - calcular o módulo quando o dividendo é menor",
-                "c": "divisor > 0 - calcular o módulo por um número negativo",
-                "d": "dividendo != 0 - calcular o módulo de zero"
-            },
-            "resposta": "a",
-            "explicacao": "A operação de módulo é implementada usando a divisão. Portanto, tentar calcular o módulo por zero causa o mesmo erro 'ZeroDivisionError'."
-        },
-        {
-            "pergunta": (
-                "6. O código calcula o arco seno de um valor.\n\n"
-                "if ______________:\n"
-                "    arcoseno = math.asin(valor)\n"
-                "    print(f'O arco seno é {arcoseno}')\n"
-                "else:\n"
-                "    print('Não é possível ______________.')"
-            ),
-            "opcoes": {
-                "a": "valor >= 0 - calcular o arco seno de um valor negativo",
-                "b": "-1 <= valor <= 1 - calcular o arco seno de um valor fora do intervalo [-1, 1]",
-                "c": "valor != 0 - calcular o arco seno de zero",
-                "d": "valor > 1 - calcular o arco seno de um valor pequeno"
+                "a": "ano % 4 == 0 and ano % 100 != 0 - identificar incorretamente anos como 2000",
+                "b": "(ano % 400 == 0) or (ano % 4 == 0 and ano % 100 != 0) - identificar corretamente um ano bissexto",
+                "c": "ano % 4 == 0 or ano % 400 == 0 - identificar incorretamente anos como 1900",
+                "d": "ano % 4 == 0 - aplicar a regra mais simples e incorreta"
             },
             "resposta": "b",
-            "explicacao": "A função seno só produz valores entre -1 e 1. Consequentemente, a sua função inversa, o arco seno, só aceita valores dentro desse mesmo intervalo."
+            "explicacao": "A regra completa e correta para um ano bissexto é uma lógica composta: o ano deve ser divisível por 400, OU divisível por 4 mas não por 100."
         },
         {
             "pergunta": (
-                "7. Este código eleva uma base a um expoente.\n\n"
+                "4. O código usa a Lei dos Cossenos para encontrar um ângulo (em radianos) a partir dos lados 'a', 'b', 'c'.\n\n"
                 "if ______________:\n"
-                "    resultado = base ** expoente\n"
-                "    print(f'O resultado é {resultado}')\n"
+                "    # A fórmula é acos((a² + b² - c²) / (2ab))\n"
+                "    valor_acos = (a**2 + b**2 - c**2) / (2 * a * b)\n"
+                "    angulo = math.acos(valor_acos)\n"
+                "    print(f'O ângulo oposto ao lado c é {angulo:.2f} radianos.')\n"
                 "else:\n"
                 "    print('Não é possível ______________.')"
             ),
             "opcoes": {
-                "a": "base != 0 or expoente >= 0 - elevar zero a uma potência negativa",
-                "b": "base > 0 and expoente > 0 - usar números negativos",
-                "c": "expoente != 0 - elevar um número a zero",
-                "d": "base is int and expoente is int - usar números com ponto flutuante"
-            },
-            "resposta": "a",
-            "explicacao": "A operação 0⁻² é equivalente a 1/0², o que causa um erro de divisão por zero. A condição garante que isso não ocorra."
-        },
-        {
-            "pergunta": (
-                "8. O código deve criar uma sequência de números com 'range'.\n\n"
-                "if ______________:\n"
-                "    for i in range(1, 10, passo):\n"
-                "        print(i)\n"
-                "else:\n"
-                "    print('Não é possível ______________.')"
-            ),
-            "opcoes": {
-                "a": "passo > 10 - usar um passo maior que o limite",
-                "b": "passo < 0 - usar um passo negativo",
-                "c": "passo != 0 - usar um passo de valor zero",
-                "d": "passo == 1 - usar um passo diferente de 1"
-            },
-            "resposta": "c",
-            "explicacao": "A função 'range' não pode ter um passo de valor zero, pois isso criaria um loop infinito. A condição 'passo != 0' previne esse erro."
-        },
-        {
-            "pergunta": (
-                "9. O código verifica se três lados podem formar um triângulo.\n\n"
-                "if ______________:\n"
-                "    print('É um triângulo válido.')\n"
-                "else:\n"
-                "    print('Não é possível ______________.')"
-            ),
-            "opcoes": {
-                "a": "a + b > c and a + c > b and b + c > a - formar um triângulo com esses lados",
-                "b": "a == b and b == c - formar um triângulo escaleno",
-                "c": "a**2 + b**2 == c**2 - formar um triângulo qualquer",
-                "d": "a + b != c - formar um triângulo equilátero"
-            },
-            "resposta": "a",
-            "explicacao": "A desigualdade triangular afirma que a soma de quaisquer dois lados de um triângulo deve ser maior que o terceiro lado. Esta é a única condição que garante a formação de um triângulo."
-        },
-        {
-            "pergunta": (
-                "10. O objetivo é calcular o inverso de um número.\n\n"
-                "if ______________:\n"
-                "    inverso = 1 / numero\n"
-                "    print(f'O inverso é {inverso}')\n"
-                "else:\n"
-                "    print('Não é possível ______________.')"
-            ),
-            "opcoes": {
-                "a": "numero > 1 - calcular o inverso de um número menor que 1",
-                "b": "numero != 0 - calcular o inverso de zero",
-                "c": "numero < 0 - calcular o inverso de um número positivo",
-                "d": "numero == 1 - calcular o inverso de 1"
+                "a": "a > 0 and b > 0 and c > 0 - formar um triângulo com lados inválidos (ex: 1, 2, 5)",
+                "b": "a + b > c and a + c > b and b + c > a - formar um triângulo válido",
+                "c": "a != 0 and b != 0 - ignorar a desigualdade triangular",
+                "d": "a**2 + b**2 != c**2 - calcular apenas para triângulos não retângulos"
             },
             "resposta": "b",
-            "explicacao": "Calcular o inverso de um número é uma forma de divisão (1 / numero). Portanto, tentar calcular o inverso de zero resulta em um erro de divisão por zero."
+            "explicacao": "Para que os lados formem um triângulo, a desigualdade triangular (`a+b > c`, etc.) deve ser satisfeita. Essa condição também garante que o argumento de `acos` estará no intervalo válido de [-1, 1]."
+        },
+        {
+            "pergunta": (
+                "5. O código deve simplificar uma fração 'numerador/denominador' para sua forma irredutível.\n\n"
+                "if ______________:\n"
+                "    divisor_comum = math.gcd(numerador, denominador)\n"
+                "    num_simplificado = numerador // divisor_comum\n"
+                "    den_simplificado = denominador // divisor_comum\n"
+                "    print(f'A fração simplificada é {num_simplificado}/{den_simplificado}')\n"
+                "else:\n"
+                "    print('Não é possível ______________.')"
+            ),
+            "opcoes": {
+                "a": "denominador != 0 - usar um denominador zero",
+                "b": "isinstance(numerador, int) and isinstance(denominador, int) - usar números não inteiros",
+                "c": "math.gcd(numerador, denominador) > 1 - simplificar frações já irredutíveis",
+                "d": "isinstance(numerador, int) and isinstance(denominador, int) and denominador != 0 - simplificar uma fração inválida"
+            },
+            "resposta": "d",
+            "explicacao": "Três condições são cruciais: o denominador não pode ser zero, e tanto o numerador quanto o denominador devem ser inteiros para que a função `math.gcd` (Máximo Divisor Comum) funcione corretamente."
+        },
+        {
+            "pergunta": (
+                "6. Para calcular a **soma e o produto** das raízes de `ax² + bx + c = 0` (Relações de Girard), qual é a única condição essencial sobre os coeficientes?\n\n"
+                "if ______________:\n"
+                "    soma_raizes = -b / a\n"
+                "    produto_raizes = c / a\n"
+                "    print(f'Soma={soma_raizes}, Produto={produto_raizes}')\n"
+                "else:\n"
+                "    print('Não é possível ______________.')"
+            ),
+            "opcoes": {
+                "a": "a != 0 - calcular a soma e o produto",
+                "b": "a != 0 and (b**2 - 4*a*c) >= 0 - encontrar as raízes, não apenas sua soma/produto",
+                "c": "b != 0 and c != 0 - ignorar o coeficiente 'a'",
+                "d": "(b**2 - 4*a*c) >= 0 - garantir raízes reais, o que não é necessário para a soma/produto"
+            },
+            "resposta": "a",
+            "explicacao": "As Relações de Girard (Soma = -b/a, Produto = c/a) funcionam até para raízes complexas. A única condição para o cálculo é que `a` seja diferente de zero, para que a divisão seja possível e a equação seja do segundo grau."
+        },
+        {
+            "pergunta": (
+                "7. O código calcula as coordenadas do **vértice** de uma parábola `y = ax² + bx + c`. Qual é a condição fundamental para que o vértice possa ser calculado?\n\n"
+                "if ______________:\n"
+                "    xv = -b / (2 * a)\n"
+                "    yv = -(b**2 - 4*a*c) / (4 * a)\n"
+                "    print(f'O vértice é ({xv}, {yv})')\n"
+                "else:\n"
+                "    print('Não é possível ______________.')"
+            ),
+            "opcoes": {
+                "a": "a != 0 - calcular o vértice de uma parábola",
+                "b": "(b**2 - 4*a*c) >= 0 - confundir com a condição para raízes reais",
+                "c": "a > 0 - calcular o vértice apenas para parábolas com concavidade para cima",
+                "d": "b != 0 and c != 0 - calcular o vértice apenas quando b e c não são zero"
+            },
+            "resposta": "a",
+            "explicacao": "O cálculo do vértice, tanto para a coordenada x (`-b/2a`) quanto para a y (`-Δ/4a`), envolve a divisão por 'a'. Portanto, a única condição necessária é que `a` seja diferente de zero, para que a equação seja de fato uma parábola e a divisão seja possível."
+        },
+        {
+            "pergunta": (
+                "8. O código valida coordenadas de GPS (latitude e longitude) em graus.\n\n"
+                "if ______________:\n"
+                "    print('Coordenadas válidas.')\n"
+                "else:\n"
+                "    print('Não é possível ______________.')"
+            ),
+            "opcoes": {
+                "a": "lat >= -90 and lat <= 90 - validar as coordenadas",
+                "b": "lon >= -180 and lon <= 180 - validar as coordenadas",
+                "c": "(lat >= -90 and lat <= 90) and (lon >= -180 and lon <= 180) - validar um par de coordenadas (lat, lon)",
+                "d": "lat != 0 and lon != 0 - proibir coordenadas na Linha do Equador ou Meridiano de Greenwich"
+            },
+            "resposta": "c",
+            "explicacao": "A validação de coordenadas GPS exige a verificação de ambos os valores: a latitude deve estar no intervalo de [-90, 90] graus, e a longitude deve estar no intervalo de [-180, 180] graus."
+        },
+        {
+            "pergunta": (
+                "9. O código calcula a **hipotenusa** de um triângulo retângulo a partir de seus dois catetos. Qual é a condição que garante que os catetos têm comprimentos válidos?\n\n"
+                "if ______________:\n"
+                "    hipotenusa = math.hypot(cateto_a, cateto_b)\n"
+                "    print(f'A hipotenusa é {hipotenusa:.2f}')\n"
+                "else:\n"
+                "    print('Não é possível ______________.')"
+            ),
+            "opcoes": {
+                "a": "cateto_a != 0 and cateto_b != 0 - calcular a hipotenusa (permite lados negativos)",
+                "b": "cateto_a >= 0 and cateto_b >= 0 - calcular a hipotenusa (permite lados com valor zero)",
+                "c": "cateto_a > 0 and cateto_b > 0 - calcular a hipotenusa com lados válidos",
+                "d": "isinstance(cateto_a, (int, float)) - verificar apenas o tipo, não o valor dos lados"
+            },
+            "resposta": "c",
+            "explicacao": "Para formar um triângulo retângulo válido, os comprimentos dos catetos devem ser valores estritamente positivos. Lados com comprimento zero ou negativo não são geometricamente possíveis."
+        },
+        {
+            "pergunta": (
+                "10. O código calcula o comprimento da **circunferência** de uma esfera. Qual condição garante que o raio da esfera é um valor geometricamente válido?\n\n"
+                "if ______________:\n"
+                "    circunferencia = 2 * math.pi * raio\n"
+                "    print(f'A circunferência da esfera é {circunferencia:.2f}')\n"
+                "else:\n"
+                "    print('Não é possível ______________.')"
+            ),
+            "opcoes": {
+                "a": "raio >= 0 - calcular a circunferência (permite uma esfera de raio zero)",
+                "b": "raio > 0 - calcular a circunferência de uma esfera com raio válido",
+                "c": "isinstance(raio, (int, float)) - apenas verificar se o raio é um número",
+                "d": "raio != 1 - proibir o cálculo para uma esfera de raio unitário"
+            },
+            "resposta": "b",
+            "explicacao": "O raio de uma esfera, sendo uma medida de comprimento, deve ser um valor estritamente positivo para que a esfera tenha uma dimensão real e uma circunferência mensurável. Um raio zero ou negativo não define uma esfera no sentido geométrico usual."
         }
     ]
 
+    # O restante do código que executa o quiz permanece o mesmo...
     pontuacao = 0
-    titulo_principal = "--- INÍCIO DO QUIZ DE MATEMÁTICA COM PYTHON ---"
+    titulo_principal = "--- INÍCIO DO QUIZ DE MATEMÁTICA E LÓGICA ---"
     print("=" * LARGURA_TERMINAL)
     print(titulo_principal.center(LARGURA_TERMINAL))
     print("=" * LARGURA_TERMINAL)
@@ -200,8 +205,8 @@ def run_quiz():
     for i, q in enumerate(perguntas):
         print(f"\n{q['pergunta']}")
         print("_" * LARGURA_TERMINAL)
-        print("\nQual alternativa preenche corretamente as lacunas para evitar o erro?\n")
         
+        print("\nQual alternativa preenche a lacuna para a lógica correta?\n")
         for alternativa, texto_opcao in q["opcoes"].items():
             partes = texto_opcao.split(" - ")
             if len(partes) == 2:
@@ -218,15 +223,14 @@ def run_quiz():
 
         if resposta_usuario == q["resposta"]:
             print("\n✅ Correto!")
+            print(f"💡 Explicação: {q['explicacao']}")
             pontuacao += 1
         else:
             print(f"\n❌ Incorreto! A resposta certa era a letra '{q['resposta']}'.")
+            print(f"💡 Explicação: {q['explicacao']}")
         
-        # Pausa para o usuário ver o resultado antes da próxima pergunta.
-        time.sleep(1.5)
-        # Adiciona um espaço extra antes da próxima questão para melhor legibilidade do Quiz.
+        time.sleep(3)
         print()
-
 
     titulo_final = "--- FIM DO QUIZ ---"
     print("\n" + "=" * LARGURA_TERMINAL)
