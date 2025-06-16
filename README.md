@@ -20,7 +20,7 @@ O quiz desafia o usuário com 10 questões de múltipla escolha, onde é preciso
 
 ## 📂 Estrutura de Pastas
 ```
-📁 Quiz-Matematica-em-Python/
+/
 ├── 📄 README.md
 └── 🐍 trabalho.py
 ```
@@ -28,7 +28,7 @@ O quiz desafia o usuário com 10 questões de múltipla escolha, onde é preciso
 
 1.  Certifique-se de ter o **Python** instalado em sua máquina.
 2.  Clone ou baixe este repositório.
-3.  Navegue até a pasta `Trabalho Matematica/` pelo terminal.
+3.  Navegue até a pasta `Quiz-Matematica-em-Python/` pelo terminal.
 4.  Execute o arquivo principal para iniciar o quiz:
 
 ```bash
